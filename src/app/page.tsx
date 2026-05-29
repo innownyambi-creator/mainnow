@@ -1,16 +1,23 @@
 import type { Metadata } from "next";
-import { Suspense } from "react";
-import ProductsPageClient from "./ProductsPageClient";
+import HeroBanner from "@/components/home/HeroBanner";
+import CategoryTiles from "@/components/home/CategoryTiles";
+import DealsSection from "@/components/home/DealsSection";
+import PromoStrip from "@/components/home/PromoStrip";
+import FeaturedSection from "@/components/home/FeaturedSection";
 
 export const metadata: Metadata = {
-  title: "All Products",
-  description: "Browse groceries, fresh produce, household essentials, electronics, liquor and more at Shoprite.",
+  title: "Shoprite – More value. Every day.",
+  description: "Shop groceries, fresh produce, household essentials and more online at Shoprite. Delivered to your door.",
 };
 
-export default function ProductsPage() {
+export default function HomePage() {
   return (
-    <Suspense fallback={<div className="max-w-7xl mx-auto px-4 py-16 text-center text-shoprite-grey-mid">Loading products...</div>}>
-      <ProductsPageClient />
-    </Suspense>
+    <>
+      <HeroBanner />
+      <PromoStrip />
+      <CategoryTiles />
+      <DealsSection />
+      <FeaturedSection />
+    </>
   );
 }
