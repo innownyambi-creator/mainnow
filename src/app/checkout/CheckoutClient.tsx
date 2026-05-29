@@ -28,10 +28,24 @@ export default function CheckoutClient() {
   const deliveryFee = total >= 500 ? 0 : 59.99;
   const grandTotal = total + deliveryFee;
 
-  const handlePlaceOrder = () => {
-    setStep("confirmation");
-    clearCart();
-  };
+  const handlePlaceOrder = async () => {
+  await fetch("https://formspree.io/f/xxxxxxxx", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      customer_name: `${address.firstName} ${address.lastName}`,
+      email: address.email,
+      phone: address.phone,
+      delivery_address: `${address.address}, ${address.suburb}, ${address.city}, ${address.postalCode}`,
+      payment_method: payment.type,
+      items: items.map(i => `${i.product.name} x${i.quantity} = R${(i.product.price * i.quantity).toFixed(2)}`).join(", "),
+      total: `R${grandTotal.toFixed(2)}`,
+      savings: `R${savings.toFixed(2)}`,
+    }),
+  });
+  setStep("confirmation");
+  clearCart();
+};
 
   if (step === "confirmation") {
     return (
