@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --shoprite-red: #E30613;
+    --shoprite-dark: #1A1A1A;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: #f1f1f1; }
+  ::-webkit-scrollbar-thumb { background: #ccc; border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: #aaa; }
+
+  :focus-visible {
+    outline: 3px solid var(--shoprite-red);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-shoprite-red text-white font-semibold px-5 py-2.5 rounded-lg hover:bg-shoprite-red-dark active:scale-95 transition-all duration-150;
+  }
+  .btn-outline {
+    @apply border-2 border-shoprite-red text-shoprite-red font-semibold px-5 py-2.5 rounded-lg hover:bg-shoprite-red hover:text-white active:scale-95 transition-all duration-150;
+  }
+  .badge-discount {
+    @apply bg-shoprite-red text-white text-xs font-bold px-2 py-0.5 rounded-full;
+  }
+  .badge-save {
+    @apply bg-shoprite-green text-white text-xs font-semibold px-2 py-0.5 rounded-full;
+  }
+  .card-product {
+    @apply bg-white rounded-xl border border-shoprite-grey-border shadow-card hover:shadow-card-hover hover:-translate-y-0.5 transition-all duration-200 overflow-hidden;
+  }
+  .price-current {
+    @apply text-shoprite-red font-bold text-xl;
+  }
+  .price-original {
+    @apply text-shoprite-grey-mid line-through text-sm;
+  }
+  .section-title {
+    font-family: 'Barlow Condensed', ui-sans-serif, system-ui, sans-serif;
+    @apply text-3xl font-bold text-shoprite-dark uppercase tracking-wide;
+  }
+}
+
+/* Font utility classes using loaded Google Fonts */
+.font-display {
+  font-family: 'Barlow Condensed', ui-sans-serif, system-ui, sans-serif;
+}
+.font-body {
+  font-family: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+}
+.font-mono {
+  font-family: 'DM Mono', ui-monospace, monospace;
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .hide-scrollbar::-webkit-scrollbar { display: none; }
+  .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 8px;
+}
