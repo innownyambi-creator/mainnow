@@ -29,7 +29,7 @@ export default function CheckoutClient() {
   const grandTotal = total + deliveryFee;
 
   const handlePlaceOrder = async () => {
-  await fetch("https://formspree.io/f/xxxxxxxx", {
+  await fetch("https://formspree.io/f/maqkvrvk", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
